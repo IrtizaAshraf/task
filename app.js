@@ -80,7 +80,7 @@ function render() {
     result.innerHTML = ''
     const user = {
         Email: email.value,
-        Password: password.value
+        Password: password.value,
     }
     arry.push(user)
     email.value = ""
@@ -116,16 +116,33 @@ function editvalue(index) {
     const changePassword = prompt("Change Password", arry[index].Password)
     arry[index].Email = changeEmail;
     arry[index].Password = changePassword;
-    render()
+    for (let i = 0; i < arry.length; i++) {
+        // console.log(arry[i]);
+        result.innerHTML += `<p>Email: ${arry[i].Email}</p>
+        <p>Password:${arry[i].Password}</p>
+        <button onclick="editvalue(${i})">Edit</button>
+        <button onclick="deletevalue(${i})">Delete</button>
+        `
+
+    }
+    // render()
 
 }
 
 function deletevalue(index) {
-    email.value='';
-    password.value='';
-    result.innerHTML = '';
+    result.innerHTML = ''
+
     arry.splice(index, 1)
-    render()
+    for (let i = 0; i < arry.length; i++) {
+        // console.log(arry[i]);
+        result.innerHTML += `<p>Email: ${arry[i].Email}</p>
+        <p>Password:${arry[i].Password}</p>
+        <button onclick="editvalue(${i})">Edit</button>
+        <button onclick="deletevalue(${i})">Delete</button>
+        `
+
+    }
+    // render()
     
 
 
